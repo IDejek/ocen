@@ -24,34 +24,17 @@ define('BDC_ADMIN', BDC_DIR . '/admin/');
 // ============================================================
 function bdc_theme_setup() {
 
-    // Title Tag
     add_theme_support('title-tag');
-
-    // Post Thumbnails
     add_theme_support('post-thumbnails');
-
-    // HTML5 Support
     add_theme_support('html5', array(
-        'search-form',
-        'comment-form',
-        'comment-list',
-        'gallery',
-        'caption',
-        'style',
-        'script',
+        'search-form', 'comment-form', 'comment-list',
+        'gallery', 'caption', 'style', 'script',
     ));
-
-    // Customizer Selective Refresh
     add_theme_support('customize-selective-refresh-widgets');
-
-    // Responsive Embeds
     add_theme_support('responsive-embeds');
-
-    // Block Editor Support
     add_theme_support('wp-block-styles');
     add_theme_support('align-wide');
 
-    // Custom Logo
     add_theme_support('custom-logo', array(
         'height'      => 80,
         'width'       => 300,
@@ -59,14 +42,12 @@ function bdc_theme_setup() {
         'flex-width'  => true,
     ));
 
-    // Image Sizes
     add_image_size('bdc-hero', 1920, 1080, true);
     add_image_size('bdc-card', 600, 450, true);
     add_image_size('bdc-thumb', 400, 300, true);
     add_image_size('bdc-gallery', 800, 600, true);
     add_image_size('bdc-fullwidth', 1400, 700, true);
 
-    // Navigation Menus
     register_nav_menus(array(
         'primary'    => __('Primary Navigation', 'babarida-dive'),
         'bunaken'    => __('Bunaken Submenu', 'babarida-dive'),
@@ -77,7 +58,6 @@ function bdc_theme_setup() {
         'footer'     => __('Footer Navigation', 'babarida-dive'),
     ));
 
-    // Text Domain
     load_theme_textdomain('babarida-dive', BDC_DIR . '/languages');
 }
 add_action('after_setup_theme', 'bdc_theme_setup');
@@ -87,7 +67,6 @@ add_action('after_setup_theme', 'bdc_theme_setup');
 // ============================================================
 function bdc_enqueue_assets() {
 
-    // Google Fonts (async load)
     wp_enqueue_style(
         'bdc-google-fonts',
         'https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap',
@@ -95,22 +74,12 @@ function bdc_enqueue_assets() {
         null
     );
 
-    // Theme Stylesheet
     wp_enqueue_style('bdc-style', get_stylesheet_uri(), array(), BDC_VERSION);
-
-    // Lucide Icons
     wp_enqueue_script('lucide-icons', 'https://unpkg.com/lucide@latest/dist/umd/lucide.min.js', array(), null, true);
-
-    // Main JS
     wp_enqueue_script('bdc-main', BDC_URI . '/assets/js/main.js', array('lucide-icons'), BDC_VERSION, true);
-
-    // Clock JS
     wp_enqueue_script('bdc-clocks', BDC_URI . '/assets/js/clocks.js', array(), BDC_VERSION, true);
-
-    // Booking JS
     wp_enqueue_script('bdc-booking', BDC_URI . '/assets/js/booking.js', array('bdc-main'), BDC_VERSION, true);
 
-    // Localize Script — Main
     wp_localize_script('bdc-main', 'bdcData', array(
         'ajaxUrl'  => admin_url('admin-ajax.php'),
         'nonce'    => wp_create_nonce('bdc_nonce'),
@@ -126,7 +95,6 @@ function bdc_enqueue_assets() {
         ),
     ));
 
-    // Localize Script — Clocks
     wp_localize_script('bdc-clocks', 'bdcClocks', array(
         'timezones' => array(
             array('city' => 'Manado',    'tz' => 'Asia/Makassar'),
@@ -140,37 +108,23 @@ function bdc_enqueue_assets() {
         ),
     ));
 }
-
 add_action('wp_enqueue_scripts', 'bdc_enqueue_assets');
 
 // Admin Assets
 function bdc_admin_assets($hook) {
-    // Only load on our custom admin pages
     $our_pages = array(
         'toplevel_page_bdc-dashboard',
-        'babarida-dive-center_page_bdc-bookings',
-        'babarida-dive-center_page_bdc-analytics',
-        'babarida-dive-center_page_bdc-pricing',
-        'babarida-dive-center_page_bdc-customers',
-        'babarida-dive-center_page_bdc-seo',
-        'babarida-dive-center_page_bdc-weather',
-        'babarida-dive-center_page_bdc-activity-log',
-        'babarida-dive-center_page_bdc-chat',
-        'babarida-dive-center_page_bdc-newsletter',
-        'babarida-dive-center_page_bdc-backup',
-        'babarida-dive-center_page_bdc-system',
-        'babarida-dive-center_page_bdc-roles',
     );
-
-    // Also load on our CPT edit screens
     $screen = get_current_screen();
-    $our_cpts = array('bdc_trip', 'bdc_liveaboard', 'bdc_hotel', 'bdc_testimonial', 'bdc_partner', 'bdc_faq', 'bdc_booking', 'bdc_course', 'bdc_watersport', 'bdc_destination');
-
+    $our_cpts = array(
+        'bdc_trip', 'bdc_liveaboard', 'bdc_hotel',
+        'bdc_testimonial', 'bdc_partner', 'bdc_faq',
+        'bdc_booking', 'bdc_course', 'bdc_watersport', 'bdc_destination',
+    );
     $should_load = in_array($hook, $our_pages);
-    if ($screen && in_array($screen->post_type, $our_cpts)) {
+    if ($screen && isset($screen->post_type) && in_array($screen->post_type, $our_cpts)) {
         $should_load = true;
     }
-
     if (!$should_load) return;
 
     wp_enqueue_style('bdc-admin', BDC_URI . '/assets/css/admin.css', array(), BDC_VERSION);
@@ -180,7 +134,7 @@ function bdc_admin_assets($hook) {
         'nonce'   => wp_create_nonce('bdc_admin_nonce'),
     ));
 }
-add_action('admin_enqueue_scripts', 'bdc_admin_assets');
+add_action('admin_enqueue_scripts', 'bdc_admin_assets);
 
 // Async font loading
 function bdc_async_fonts($tag, $handle) {
@@ -196,31 +150,15 @@ add_filter('style_loader_tag', 'bdc_async_fonts', 10, 2);
 // WIDGET AREAS
 // ============================================================
 function bdc_widgets_init() {
-    $sidebar_defaults = array(
+    $defaults = array(
         'before_widget' => '<div id="%1$s" class="footer-widget %2$s">',
         'after_widget'  => '</div>',
         'before_title'  => '<h4 class="footer-widget-title">',
         'after_title'   => '</h4>',
     );
-
-    register_sidebar(array_merge($sidebar_defaults, array(
-        'name'        => __('Footer Column 1', 'babarida-dive'),
-        'id'          => 'footer-1',
-        'description' => __('Footer widget area 1.', 'babarida-dive'),
-    )));
-
-    register_sidebar(array_merge($sidebar_defaults, array(
-        'name'        => __('Footer Column 2', 'babarida-dive'),
-        'id'          => 'footer-2',
-        'description' => __('Footer widget area 2.', 'babarida-dive'),
-    )));
-
-    register_sidebar(array_merge($sidebar_defaults, array(
-        'name'        => __('Footer Column 3', 'babarida-dive'),
-        'id'          => 'footer-3',
-        'description' => __('Footer widget area 3.', 'babarida-dive'),
-    )));
-
+    register_sidebar(array_merge($defaults, array('name' => __('Footer Column 1', 'babarida-dive'), 'id' => 'footer-1', 'description' => __('Footer widget area 1.', 'babarida-dive'))));
+    register_sidebar(array_merge($defaults, array('name' => __('Footer Column 2', 'babarida-dive'), 'id' => 'footer-2', 'description' => __('Footer widget area 2.', 'babarida-dive'))));
+    register_sidebar(array_merge($defaults, array('name' => __('Footer Column 3', 'babarida-dive'), 'id' => 'footer-3', 'description' => __('Footer widget area 3.', 'babarida-dive'))));
     register_sidebar(array(
         'name'          => __('Sidebar', 'babarida-dive'),
         'id'            => 'sidebar-1',
@@ -247,11 +185,10 @@ add_action('widgets_init', 'bdc_widgets_init');
     'cpt-courses.php',
     'cpt-watersports.php',
 );
-
-foreach ($bdc_cpt_files as $bdc_cpt_file) {
-    $bdc_cpt_path = BDC_INC . $bdc_cpt_file;
-    if (file_exists($bdc_cpt_path)) {
-        require_once $bdc_cpt_path;
+foreach ($bdc_cpt_files as $bdc_file) {
+    $bdc_path = BDC_INC . $bdc_file;
+    if (file_exists($bdc_path)) {
+        require_once $bdc_path;
     }
 }
 
@@ -280,12 +217,13 @@ foreach ($bdc_cpt_files as $bdc_cpt_file) {
     'class-admin-chat.php',
     'class-newsletter.php',
     'class-social-sync.php',
+    'class-template-fallback.php',
+    'class-asset-fallback.php',
 );
-
-foreach ($bdc_class_files as $bdc_class_file) {
-    $bdc_class_path = BDC_INC . $bdc_class_file;
-    if (file_exists($bdc_class_path)) {
-        require_once $bdc_class_path;
+foreach ($bdc_class_files as $bdc_file) {
+    $bdc_path = BDC_INC . $bdc_file;
+    if (file_exists($bdc_path)) {
+        require_once $bdc_path;
     }
 }
 
@@ -317,11 +255,10 @@ if (is_admin()) {
         'backup.php',
         'system-health.php',
     );
-
-    foreach ($bdc_admin_files as $bdc_admin_file) {
-        $bdc_admin_path = BDC_ADMIN . $bdc_admin_file;
-        if (file_exists($bdc_admin_path)) {
-            require_once $bdc_admin_path;
+    foreach ($bdc_admin_files as $bdc_file) {
+        $bdc_path = BDC_ADMIN . $bdc_file;
+        if (file_exists($bdc_path)) {
+            require_once $bdc_path;
         }
     }
 }
@@ -349,20 +286,13 @@ function bdc_submit_booking() {
         'status'      => 'pending',
     );
 
-    // Validate required fields
     if (empty($data['name']) || empty($data['email'])) {
-        wp_send_json_error(array(
-            'message' => __('Name and email are required.', 'babarida-dive'),
-        ));
+        wp_send_json_error(array('message' => __('Name and email are required.', 'babarida-dive')));
     }
-
     if (!is_email($data['email'])) {
-        wp_send_json_error(array(
-            'message' => __('Please enter a valid email address.', 'babarida-dive'),
-        ));
+        wp_send_json_error(array('message' => __('Please enter a valid email address.', 'babarida-dive')));
     }
 
-    // Create booking post
     $post_id = wp_insert_post(array(
         'post_title'  => sprintf(__('Booking: %s — %s', 'babarida-dive'), $data['name'], $data['date']),
         'post_type'   => 'bdc_booking',
@@ -371,24 +301,19 @@ function bdc_submit_booking() {
     ));
 
     if (is_wp_error($post_id)) {
-        wp_send_json_error(array(
-            'message' => __('Booking failed. Please try again.', 'babarida-dive'),
-        ));
+        wp_send_json_error(array('message' => __('Booking failed. Please try again.', 'babarida-dive')));
     }
 
-    // Generate QR code
     if (!get_post_meta($post_id, 'qr_code', true)) {
         $qr_code = 'BDC-' . $post_id . '-' . strtoupper(substr(md5($post_id . wp_salt()), 0, 8));
         update_post_meta($post_id, 'qr_code', $qr_code);
     }
 
-    // Send notifications (non-blocking, don't block response)
     if (class_exists('BDC_Notification_System')) {
         try {
             BDC_Notification_System::send_booking_confirmation($post_id, $data);
             BDC_Notification_System::send_whatsapp_notification($data);
         } catch (Exception $e) {
-            // Log error but don't fail the booking
             error_log('BDC Notification Error: ' . $e->getMessage());
         }
     }
@@ -410,21 +335,18 @@ function bdc_submit_checkin() {
         wp_send_json_error(array('message' => __('Invalid booking ID.', 'babarida-dive')));
     }
 
-    // Verify booking exists
     $booking = get_post($booking_id);
     if (!$booking || $booking->post_type !== 'bdc_booking') {
         wp_send_json_error(array('message' => __('Booking not found.', 'babarida-dive')));
     }
 
-    // Save check-in data
-    $checkin_fields = array(
+    $checkin_map = array(
         'passport_number'     => 'passport_number',
         'passport_expiry'     => 'passport_expiry',
         'hotel_pickup'        => 'hotel_pickup',
         'certification_level' => 'certification_level',
     );
-
-    foreach ($checkin_fields as $post_key => $meta_key) {
+    foreach ($checkin_map as $post_key => $meta_key) {
         $value = sanitize_text_field($_POST[$post_key] ?? '');
         if ($value) {
             update_post_meta($booking_id, $meta_key, $value);
@@ -438,9 +360,9 @@ function bdc_submit_checkin() {
     $qr_code = get_post_meta($booking_id, 'qr_code', true);
 
     wp_send_json_success(array(
-        'message'   => __('Check-in completed! See you at the dive center.', 'babarida-dive'),
-        'qr_code'   => $qr_code,
-        'booking_id'=> $booking_id,
+        'message'    => __('Check-in completed! See you at the dive center.', 'babarida-dive'),
+        'qr_code'    => $qr_code,
+        'booking_id' => $booking_id,
     ));
 }
 
@@ -455,7 +377,6 @@ function bdc_find_checkin() {
         wp_send_json_error(array('message' => __('Please enter a booking reference or email.', 'babarida-dive')));
     }
 
-    // Search by booking ID (BDC-123) or email
     $args = array(
         'post_type'      => 'bdc_booking',
         'posts_per_page' => 1,
@@ -463,22 +384,16 @@ function bdc_find_checkin() {
         'order'          => 'DESC',
     );
 
-    // Check if searching by BDC-XXX format
     if (preg_match('/^BDC-(\d+)$/i', $search, $matches)) {
         $args['p'] = intval($matches[1]);
     } else {
-        $args['meta_query'] = array(
-            array(
-                'key'   => 'email',
-                'value' => $search,
-            ),
-        );
+        $args['meta_query'] = array(array('key' => 'email', 'value' => $search));
     }
 
     $bookings = get_posts($args);
 
     if (empty($bookings)) {
-        wp_send_json_error(array('message' => __('Booking not found. Please check your reference or email.', 'babarida-dive')));
+        wp_send_json_error(array('message' => __('Booking not found.', 'babarida-dive')));
     }
 
     $b = $bookings[0];
@@ -487,7 +402,6 @@ function bdc_find_checkin() {
     if ($status === 'completed') {
         wp_send_json_error(array('message' => __('This booking has already been completed.', 'babarida-dive')));
     }
-
     if ($status === 'cancelled') {
         wp_send_json_error(array('message' => __('This booking has been cancelled.', 'babarida-dive')));
     }
@@ -513,7 +427,6 @@ function bdc_subscribe_newsletter() {
         wp_send_json_error(array('message' => __('Please enter a valid email address.', 'babarida-dive')));
     }
 
-    // Check for duplicate
     $exists = get_posts(array(
         'post_type'      => 'bdc_newsletter_sub',
         'meta_key'       => 'subscriber_email',
@@ -521,7 +434,6 @@ function bdc_subscribe_newsletter() {
         'posts_per_page' => 1,
         'fields'         => 'ids',
     ));
-
     if (!empty($exists)) {
         wp_send_json_error(array('message' => __('You are already subscribed.', 'babarida-dive')));
     }
@@ -537,7 +449,7 @@ function bdc_subscribe_newsletter() {
     ));
 
     if (is_wp_error($sub_id)) {
-        wp_send_json_error(array('message' => __('Subscription failed. Please try again.', 'babarida-dive')));
+        wp_send_json_error(array('message' => __('Subscription failed.', 'babarida-dive')));
     }
 
     wp_send_json_success(array('message' => __('Successfully subscribed!', 'babarida-dive')));
@@ -569,11 +481,9 @@ add_action('wp_ajax_nopriv_bdc_switch_currency', 'bdc_switch_currency');
 function bdc_switch_currency() {
     $currency = sanitize_text_field($_POST['currency'] ?? 'USD');
     $valid    = array('USD', 'IDR', 'EUR', 'SGD', 'AUD');
-
     if (!in_array($currency, $valid)) {
         wp_send_json_error();
     }
-
     setcookie('bdc_currency', $currency, time() + (86400 * 30), '/');
     wp_send_json_success(array('currency' => $currency));
 }
@@ -596,20 +506,12 @@ function bdc_filter_products() {
 
     $destination = sanitize_text_field($_POST['destination'] ?? '');
     if (!empty($destination) && taxonomy_exists('bdc_destination')) {
-        $tax_query[] = array(
-            'taxonomy' => 'bdc_destination',
-            'field'    => 'slug',
-            'terms'    => $destination,
-        );
+        $tax_query[] = array('taxonomy' => 'bdc_destination', 'field' => 'slug', 'terms' => $destination);
     }
 
     $activity = sanitize_text_field($_POST['activity'] ?? '');
     if (!empty($activity) && taxonomy_exists('bdc_activity')) {
-        $tax_query[] = array(
-            'taxonomy' => 'bdc_activity',
-            'field'    => 'slug',
-            'terms'    => $activity,
-        );
+        $tax_query[] = array('taxonomy' => 'bdc_activity', 'field' => 'slug', 'terms' => $activity);
     }
 
     if (!empty($tax_query)) {
@@ -621,17 +523,11 @@ function bdc_filter_products() {
     $price_max = intval($_POST['price_max'] ?? 0);
     if ($price_min > 0 || $price_max > 0) {
         $args['meta_query'] = array(
-            array(
-                'key'     => 'price_usd',
-                'value'   => array(max(0, $price_min), max(1, $price_max)),
-                'compare' => 'BETWEEN',
-                'type'    => 'NUMERIC',
-            ),
+            array('key' => 'price_usd', 'value' => array(max(0, $price_min), max(1, $price_max)), 'compare' => 'BETWEEN', 'type' => 'NUMERIC'),
         );
     }
 
     $query = new WP_Query($args);
-
     ob_start();
 
     if ($query->have_posts()) :
@@ -641,16 +537,12 @@ function bdc_filter_products() {
         endwhile;
     else :
         echo '<p style="grid-column:1/-1;padding:40px 0;color:var(--mid-gray);text-align:center;">'
-           . esc_html__('No results found. Try adjusting your filters.', 'babarida-dive')
-           . '</p>';
+           . esc_html__('No results found. Try adjusting your filters.', 'babarida-dive') . '</p>';
     endif;
 
     wp_reset_postdata();
-
-    $html = ob_get_clean();
-
     wp_send_json_success(array(
-        'html'      => $html,
+        'html'      => ob_get_clean(),
         'total'     => $query->found_posts,
         'max_pages' => $query->max_num_pages,
     ));
@@ -663,14 +555,7 @@ function bdc_get_weather() {
     if (class_exists('BDC_Weather_API')) {
         $weather = BDC_Weather_API::get_current();
     } else {
-        $weather = array(
-            'temp'      => 30,
-            'water'     => 29,
-            'visibility'=> 20,
-            'wind'      => 12,
-            'tide'      => 1.2,
-            'condition' => 'Partly Cloudy',
-        );
+        $weather = array('temp' => 30, 'water' => 29, 'visibility' => 20, 'wind' => 12, 'tide' => 1.2, 'condition' => 'Partly Cloudy');
     }
     wp_send_json_success($weather);
 }
@@ -711,16 +596,15 @@ function bdc_ajax_change_status() {
 
     $booking_id = intval($_POST['booking_id'] ?? 0);
     $status     = sanitize_text_field($_POST['status'] ?? '');
-    $valid_statuses = array('pending', 'confirmed', 'paid', 'checked-in', 'completed', 'cancelled');
+    $valid      = array('pending', 'confirmed', 'paid', 'checked-in', 'completed', 'cancelled');
 
-    if (!$booking_id || !in_array($status, $valid_statuses)) {
+    if (!$booking_id || !in_array($status, $valid)) {
         wp_send_json_error(array('message' => __('Invalid parameters.', 'babarida-dive')));
     }
 
     $old_status = get_post_meta($booking_id, 'status', true);
     update_post_meta($booking_id, 'status', $status);
 
-    // Fire hooks
     if ($status === 'confirmed' && $old_status !== 'confirmed') {
         do_action('bdc_booking_confirmed', $booking_id);
     }
@@ -728,12 +612,8 @@ function bdc_ajax_change_status() {
         do_action('bdc_booking_cancelled', $booking_id);
     }
 
-    // Log activity
     if (class_exists('BDC_Activity_Logger')) {
-        BDC_Activity_Logger::log(
-            'Booking status changed',
-            sprintf('BDC-%d: %s → %s', $booking_id, $old_status, $status)
-        );
+        BDC_Activity_Logger::log('Booking status changed', sprintf('BDC-%d: %s → %s', $booking_id, $old_status, $status));
     }
 
     wp_send_json_success(array('status' => $status));
@@ -756,7 +636,6 @@ function bdc_ajax_refresh_gallery() {
            . wp_get_attachment_image($img_id, 'thumbnail')
            . '</div>';
     }
-
     wp_die();
 }
 
@@ -764,30 +643,27 @@ function bdc_ajax_refresh_gallery() {
 // SCHEMA MARKUP OUTPUT
 // ============================================================
 function bdc_output_schema() {
-    // TouristTrip schema for trip CPTs
     if (is_singular(array('bdc_trip', 'bdc_liveaboard', 'bdc_destination'))) {
         global $post;
         $price = get_post_meta($post->ID, 'price_usd', true);
 
         $schema = array(
-            '@context'  => 'https://schema.org',
-            '@type'     => 'TouristTrip',
-            'name'      => get_the_title(),
+            '@context'   => 'https://schema.org',
+            '@type'      => 'TouristTrip',
+            'name'       => get_the_title(),
             'description'=> wp_strip_all_tags(get_the_excerpt()),
-            'url'       => get_permalink(),
-            'image'     => get_the_post_thumbnail_url($post->ID, 'full'),
-            'offers'    => array(
+            'url'        => get_permalink(),
+            'image'      => get_the_post_thumbnail_url($post->ID, 'full'),
+            'offers'     => array(
                 '@type'         => 'Offer',
                 'price'         => $price ? $price : '0',
                 'priceCurrency' => 'USD',
                 'availability'  => 'https://schema.org/InStock',
             ),
         );
-
         echo '<script type="application/ld+json">' . wp_json_encode($schema, JSON_UNESCAPED_SLASHES) . '</script>' . "\n";
     }
 
-    // Liveaboard schema
     if (is_singular('bdc_liveaboard')) {
         global $post;
         $schema = array(
@@ -804,7 +680,7 @@ function bdc_output_schema() {
 add_action('wp_head', 'bdc_output_schema');
 
 // ============================================================
-// SITEMAP & ROBOTS (dynamic via rewrite rules)
+// SITEMAP & ROBOTS (dynamic via rewrite)
 // ============================================================
 function bdc_generate_sitemap() {
     if (!isset($_GET['sitemap']) || $_GET['sitemap'] !== 'xml') {
@@ -815,17 +691,7 @@ function bdc_generate_sitemap() {
     echo '<?xml version="1.0" encoding="UTF-8"?>' . "\n";
     echo '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' . "\n";
 
-    $post_types = array(
-        'page',
-        'post',
-        'bdc_destination',
-        'bdc_trip',
-        'bdc_liveaboard',
-        'bdc_hotel',
-        'bdc_course',
-        'bdc_watersport',
-        'bdc_faq',
-    );
+    $post_types = array('page', 'post', 'bdc_destination', 'bdc_trip', 'bdc_liveaboard', 'bdc_hotel', 'bdc_course', 'bdc_watersport', 'bdc_faq');
 
     foreach ($post_types as $pt) {
         $posts = get_posts(array(
@@ -834,14 +700,13 @@ function bdc_generate_sitemap() {
             'post_status'    => 'publish',
             'fields'         => 'ids',
         ));
-
         foreach ($posts as $p_id) {
             $mod  = get_post_modified_time('Y-m-d\TH:i:s+00:00', false, $p_id);
             $freq = ($pt === 'post') ? 'weekly' : 'monthly';
             $pri  = '0.6';
-            if ($pt === 'page')              $pri = '0.8';
-            if ($pt === 'bdc_destination')   $pri = '0.9';
-            if ($p_id === get_option('page_on_front')) $pri = '1.0';
+            if ($pt === 'page')            $pri = '0.8';
+            if ($pt === 'bdc_destination')  $pri = '0.9';
+            if ($p_id == get_option('page_on_front')) $pri = '1.0';
 
             printf(
                 "<url><loc>%s</loc><lastmod>%s</lastmod><changefreq>%s</changefreq><priority>%s</priority></url>\n",
@@ -852,7 +717,6 @@ function bdc_generate_sitemap() {
             );
         }
     }
-
     echo '</urlset>';
     exit;
 }
@@ -875,7 +739,6 @@ function bdc_generate_robots() {
 }
 add_action('init', 'bdc_generate_robots');
 
-// Rewrite rules for sitemap.xml and robots.txt
 function bdc_rewrite_rules() {
     add_rewrite_rule('^sitemap\.xml$', 'index.php?sitemap=xml', 'top');
     add_rewrite_rule('^robots\.txt$', 'index.php?robots=txt', 'top');
@@ -892,86 +755,66 @@ add_filter('query_vars', 'bdc_query_vars');
 // ============================================================
 // SECURITY ENHANCEMENTS
 // ============================================================
-
-// Remove WordPress version from head
 remove_action('wp_head', 'wp_generator');
 remove_action('wp_head', 'wlwmanifest_link');
 remove_action('wp_head', 'rsd_link');
 remove_action('wp_head', 'wp_shortlink_wp_head');
 remove_action('wp_head', 'rest_output_link_wp_head');
-
-// Disable XML-RPC
 add_filter('xmlrpc_enabled', '__return_false');
 
-// Login attempts limiter
+// Login limiter
 function bdc_login_limiter($user) {
     if (!isset($_SERVER['REQUEST_METHOD']) || $_SERVER['REQUEST_METHOD'] !== 'POST') {
         return $user;
     }
-
-    $ip       = isset($_SERVER['REMOTE_ADDR']) ? $_SERVER['REMOTE_ADDR'] : 'unknown';
+    $ip = isset($_SERVER['REMOTE_ADDR']) ? $_SERVER['REMOTE_ADDR'] : 'unknown';
     $attempts = get_transient('bdc_login_' . $ip);
-
     if ($attempts !== false && (int) $attempts >= 5) {
-        return new WP_Error(
-            'too_many_attempts',
-            __('Too many login attempts. Please try again in 15 minutes.', 'babarida-dive'),
-            array('status' => 429)
-        );
+        return new WP_Error('too_many_attempts', __('Too many login attempts. Please try again in 15 minutes.', 'babarida-dive'), array('status' => 429));
     }
-
-    // Only count for failed attempts (user is WP_Error)
     if (is_wp_error($user)) {
         set_transient('bdc_login_' . $ip, ((int) $attempts + 1), 900);
     }
-
     return $user;
 }
 add_filter('authenticate', 'bdc_login_limiter', 30);
 
-// Clear login attempts on successful login
 function bdc_clear_login_limiter($user) {
     if (!is_wp_error($user) && isset($_SERVER['REMOTE_ADDR'])) {
-        $ip = $_SERVER['REMOTE_ADDR'];
-        delete_transient('bdc_login_' . $ip);
+        delete_transient('bdc_login_' . $_SERVER['REMOTE_ADDR']);
     }
     return $user;
 }
 add_filter('authenticate', 'bdc_clear_login_limiter', 40);
 
-// Security headers
+// Security headers (duplicate-safe)
 function bdc_security_headers() {
-    header('X-Content-Type-Options: nosniff');
-    header('X-Frame-Options: SAMEORIGIN');
-    header('X-XSS-Protection: 1; mode=block');
-    header('Referrer-Policy: strict-origin-when-cross-origin');
+    $headers_list = headers_list();
+    $sent_lower = array_map('strtolower', $headers_list);
+
+    if (!in_array('x-content-type-options: nosniff', $sent_lower)) {
+        header('X-Content-Type-Options: nosniff');
+    }
+    if (!in_array('x-frame-options: sameorigin', $sent_lower)) {
+        header('X-Frame-Options: SAMEORIGIN');
+    }
+    if (!in_array('x-xss-protection: 1; mode=block', $sent_lower)) {
+        header('X-XSS-Protection: 1; mode=block');
+    }
+    if (!in_array('referrer-policy: strict-origin-when-cross-origin', $sent_lower)) {
+        header('Referrer-Policy: strict-origin-when-cross-origin');
+    }
 }
 add_action('send_headers', 'bdc_security_headers');
 
-// Sanitize upload types — block dangerous files
+// Block dangerous upload types
 function bdc_disallow_upload_types($types) {
-    unset(
-        $types['php'],
-        $types['php4'],
-        $types['php5'],
-        $types['php7'],
-        $types['php8'],
-        $types['phtml'],
-        $types['pht'],
-        $types['exe'],
-        $types['js'],
-        $types['html'],
-        $types['htm'],
-        $types['sh'],
-        $types['py'],
-        $types['pl'],
-        $types['cgi']
-    );
+    unset($types['php'], $types['php4'], $types['php5'], $types['php7'], $types['php8'], $types['phtml'], $types['pht'], $types['exe'], $types['js'], $types['html'], $types['htm'], $types['sh'], $types['py'], $types['pl'], $types['cgi']);
     return $types;
 }
 add_filter('upload_mimes', 'bdc_disallow_upload_types');
 
-// Remove author pages (security)
+// Disable author pages
 function bdc_disable_author_pages() {
     if (isset($_GET['author'])) {
         wp_redirect(home_url(), 301);
@@ -983,22 +826,18 @@ add_action('template_redirect', 'bdc_disable_author_pages');
 // ============================================================
 // PERFORMANCE OPTIMIZATIONS
 // ============================================================
-
-// Defer non-critical JS
 function bdc_defer_js($tag, $handle) {
-    $defer_handles = array('lucide-icons', 'bdc-main', 'bdc-clocks', 'bdc-booking');
-    if (in_array($handle, $defer_handles)) {
+    $defer = array('lucide-icons', 'bdc-main', 'bdc-clocks', 'bdc-booking');
+    if (in_array($handle, $defer)) {
         return str_replace(' src=', ' defer src=', $tag);
     }
     return $tag;
 }
 add_filter('script_loader_tag', 'bdc_defer_js', 10, 2);
 
-// Remove emoji scripts (saves ~30KB)
 remove_action('wp_head', 'print_emoji_detection_script', 7);
 remove_action('wp_print_styles', 'print_emoji_styles');
 
-// Native lazy loading for images
 function bdc_lazy_load_images($attr) {
     if (!is_admin()) {
         $attr['loading'] = 'lazy';
@@ -1008,19 +847,14 @@ function bdc_lazy_load_images($attr) {
 }
 add_filter('wp_get_attachment_image_attributes', 'bdc_lazy_load_images');
 
-// Preload hero image
 function bdc_preload_hero() {
     $hero_img = get_theme_mod('bdc_hero_image', '');
     if ($hero_img) {
-        printf(
-            '<link rel="preload" as="image" href="%s">' . "\n",
-            esc_url($hero_img)
-        );
+        printf('<link rel="preload" as="image" href="%s">' . "\n", esc_url($hero_img));
     }
 }
 add_action('wp_head', 'bdc_preload_hero', 1);
 
-// DNS prefetch for external domains
 function bdc_dns_prefetch() {
     echo '<link rel="dns-prefetch" href="//fonts.googleapis.com">' . "\n";
     echo '<link rel="dns-prefetch" href="//unpkg.com">' . "\n";
@@ -1029,7 +863,6 @@ function bdc_dns_prefetch() {
 }
 add_action('wp_head', 'bdc_dns_prefetch', 0);
 
-// Disable jQuery Migrate on frontend
 function bdc_dequeue_jquery_migrate($scripts) {
     if (!is_admin() && isset($scripts->registered['jquery'])) {
         $script = $scripts->registered['jquery'];
@@ -1045,16 +878,15 @@ add_action('wp_default_scripts', 'bdc_dequeue_jquery_migrate');
 // ============================================================
 function bdc_gutenberg_colors() {
     add_theme_support('editor-color-palette', array(
-        array('name' => __('Deep Ocean', 'babarida-dive'),     'slug' => 'deep-ocean',     'color' => '#001D3D'),
-        array('name' => __('Mid Ocean', 'babarida-dive'),      'slug' => 'mid-ocean',      'color' => '#003566'),
-        array('name' => __('Bright Blue', 'babarida-dive'),    'slug' => 'bright-blue',    'color' => '#0077B6'),
-        array('name' => __('Sky Blue', 'babarida-dive'),       'slug' => 'sky-blue',       'color' => '#00B4D8'),
-        array('name' => __('Tropical Yellow', 'babarida-dive'),'slug' => 'tropical-yellow','color' => '#FFB703'),
-        array('name' => __('Golden', 'babarida-dive'),         'slug' => 'golden',         'color' => '#FB8500'),
-        array('name' => __('Coral', 'babarida-dive'),          'slug' => 'coral',          'color' => '#E07A5F'),
-        array('name' => __('White', 'babarida-dive'),          'slug' => 'white',          'color' => '#FFFFFF'),
+        array('name' => __('Deep Ocean', 'babarida-dive'),      'slug' => 'deep-ocean',      'color' => '#001D3D'),
+        array('name' => __('Mid Ocean', 'babarida-dive'),       'slug' => 'mid-ocean',       'color' => '#003566'),
+        array('name' => __('Bright Blue', 'babarida-dive'),     'slug' => 'bright-blue',     'color' => '#0077B6'),
+        array('name' => __('Sky Blue', 'babarida-dive'),        'slug' => 'sky-blue',        'color' => '#00B4D8'),
+        array('name' => __('Tropical Yellow', 'babarida-dive'), 'slug' => 'tropical-yellow', 'color' => '#FFB703'),
+        array('name' => __('Golden', 'babarida-dive'),          'slug' => 'golden',          'color' => '#FB8500'),
+        array('name' => __('Coral', 'babarida-dive'),           'slug' => 'coral',           'color' => '#E07A5F'),
+        array('name' => __('White', 'babarida-dive'),           'slug' => 'white',           'color' => '#FFFFFF'),
     ));
-
     add_theme_support('editor-font-sizes', array(
         array('name' => __('Small', 'babarida-dive'),  'slug' => 'small',  'size' => 13),
         array('name' => __('Normal', 'babarida-dive'), 'slug' => 'normal', 'size' => 16),
@@ -1068,14 +900,10 @@ add_action('after_setup_theme', 'bdc_gutenberg_colors');
 // ============================================================
 // EXCERPT SETTINGS
 // ============================================================
-function bdc_excerpt_length($length) {
-    return 20;
-}
+function bdc_excerpt_length($length) { return 20; }
 add_filter('excerpt_length', 'bdc_excerpt_length');
 
-function bdc_excerpt_more($more) {
-    return '...';
-}
+function bdc_excerpt_more($more) { return '...'; }
 add_filter('excerpt_more', 'bdc_excerpt_more');
 
 // ============================================================
@@ -1083,17 +911,9 @@ add_filter('excerpt_more', 'bdc_excerpt_more');
 // ============================================================
 function bdc_body_classes($classes) {
     $classes[] = 'bdc-theme';
-
-    if (is_front_page()) {
-        $classes[] = 'home';
-    }
-    if (is_singular()) {
-        $classes[] = 'singular';
-    }
-    if (wp_is_mobile()) {
-        $classes[] = 'mobile';
-    }
-
+    if (is_front_page())  $classes[] = 'home';
+    if (is_singular())    $classes[] = 'singular';
+    if (wp_is_mobile())   $classes[] = 'mobile';
     return $classes;
 }
 add_filter('body_class', 'bdc_body_classes');
@@ -1102,10 +922,7 @@ add_filter('body_class', 'bdc_body_classes');
 // CUSTOM LOGIN PAGE
 // ============================================================
 function bdc_custom_login_handler() {
-    if (!isset($_GET['bdc-login'])) {
-        return;
-    }
-
+    if (!isset($_GET['bdc-login'])) return;
     $login_template = BDC_DIR . '/templates/login.php';
     if (file_exists($login_template)) {
         include $login_template;
@@ -1114,27 +931,12 @@ function bdc_custom_login_handler() {
 }
 add_action('init', 'bdc_custom_login_handler');
 
-// Redirect wp-login to custom login
 function bdc_redirect_login() {
     global $pagenow;
-
-    if ($pagenow !== 'wp-login.php') {
-        return;
-    }
-
-    // Allow standard WordPress actions to work (logout, lostpassword, etc.)
-    $allowed_actions = array('logout', 'lostpassword', 'rp', 'resetpass', 'postpass');
+    if ($pagenow !== 'wp-login.php') return;
     $action = isset($_REQUEST['action']) ? $_REQUEST['action'] : '';
-
-    if (in_array($action, $allowed_actions)) {
-        return;
-    }
-
-    // Allow POST requests (actual login form submissions)
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        return;
-    }
-
+    if (in_array($action, array('logout', 'lostpassword', 'rp', 'resetpass', 'postpass'))) return;
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') return;
     wp_redirect(home_url('/wp-login.php?bdc-login=1'));
     exit;
 }
@@ -1149,72 +951,79 @@ function bdc_pwa_headers() {
 add_action('send_headers', 'bdc_pwa_headers');
 
 // ============================================================
-// CUSTOM FALLBACK MENU (used when no menu is assigned)
+// CUSTOMIZER LIVE PREVIEW
+// ============================================================
+function bdc_customize_preview_js() {
+    if (is_customize_preview()) {
+        wp_enqueue_script('bdc-customizer-preview', BDC_URI . '/assets/js/customizer-preview.js', array('jquery', 'customize-preview'), BDC_VERSION, true);
+    }
+}
+add_action('customize_preview_init', 'bdc_customize_preview_js');
+
+// ============================================================
+// FALLBACK MENU (when no menu assigned)
 // ============================================================
 function bdc_fallback_menu() {
-    $fallback_items = array(
-        array('url' => home_url('/'),               'label' => __('Home', 'babarida-dive')),
-        array('url' => home_url('/bunaken'),         'label' => 'Bunaken'),
-        array('url' => home_url('/siladen'),         'label' => 'Siladen'),
-        array('url' => home_url('/bangka'),          'label' => 'Bangka'),
-        array('url' => home_url('/lembeh'),          'label' => 'Lembeh'),
-        array('url' => home_url('/liveaboards'),     'label' => __('Liveaboards', 'babarida-dive')),
-        array('url' => home_url('/blog'),            'label' => __('Blog', 'babarida-dive')),
-        array('url' => home_url('/faq'),             'label' => __('FAQ', 'babarida-dive')),
-        array('url' => home_url('/check-in'),        'label' => __('Check-In', 'babarida-dive')),
+    $items = array(
+        array('url' => home_url('/'),           'label' => __('Home', 'babarida-dive')),
+        array('url' => home_url('/bunaken'),       'label' => 'Bunaken'),
+        array('url' => home_url('/siladen'),       'label' => 'Siladen'),
+        array('url' => home_url('/bangka'),        'label' => 'Bangka'),
+        array('url' => home_url('/lembeh'),        'label' => 'Lembeh'),
+        array('url' => home_url('/liveaboards'),   'label' => __('Liveaboards', 'babarida-dive')),
+        array('url' => home_url('/blog'),          'label' => __('Blog', 'babarida-dive')),
+        array('url' => home_url('/faq'),           'label' => __('FAQ', 'babarida-dive')),
+        array('url' => home_url('/check-in'),      'label' => __('Check-In', 'babarida-dive')),
     );
-
     echo '<ul class="nav-menu">';
-    foreach ($fallback_items as $item) {
+    foreach ($items as $item) {
         echo '<li><a href="' . esc_url($item['url']) . '">' . esc_html($item['label']) . '</a></li>';
     }
     echo '</ul>';
 }
 
 // ============================================================
+// CPT CAPABILITY MAPPING
+// ============================================================
+function bdc_map_booking_meta_caps($caps, $cap, $user_id, $args) {
+    if (strpos($cap, 'bdc_booking') === false) return $caps;
+    if (user_can($user_id, 'manage_options')) return array('manage_options');
+    if (user_can($user_id, 'bdc_manage_bookings')) return array('bdc_manage_bookings');
+    if (user_can($user_id, 'bdc_view_bookings') && in_array($cap, array('read_bdc_booking', 'edit_bdc_booking'))) {
+        return array('bdc_view_bookings');
+    }
+    return $caps;
+}
+add_filter('map_meta_cap', 'bdc_map_booking_meta_caps', 10, 4);
+
+// ============================================================
 // ACTIVATION HOOK
 // ============================================================
 function bdc_activate() {
-
-    // Flush rewrite rules (critical for sitemap.xml and robots.txt)
     flush_rewrite_rules();
 
-    // Create essential pages if they don't exist
-    $pages_to_create = array(
-        'check-in' => array(
-            'title'    => __('Check-In', 'babarida-dive'),
-            'template' => 'templates/check-in.php',
-        ),
-        'booking'  => array(
-            'title'    => __('Book Now', 'babarida-dive'),
-            'template' => 'templates/booking-form.php',
-        ),
-        'faq'      => array(
-            'title'    => __('FAQ', 'babarida-dive'),
-            'template' => '',
-        ),
+    $pages = array(
+        'check-in' => array('title' => __('Check-In', 'babarida-dive'), 'template' => 'templates/check-in.php'),
+        'booking'  => array('title' => __('Book Now', 'babarida-dive'), 'template' => 'templates/booking-form.php'),
+        'faq'      => array('title' => __('FAQ', 'babarida-dive'), 'template' => ''),
     );
 
-    foreach ($pages_to_create as $slug => $page_data) {
-        $existing = get_page_by_path($slug);
-
-        if (!$existing) {
-            $page_id = wp_insert_post(array(
-                'post_title'  => $page_data['title'],
+    foreach ($pages as $slug => $data) {
+        if (!get_page_by_path($slug)) {
+            $id = wp_insert_post(array(
+                'post_title'  => $data['title'],
                 'post_name'   => $slug,
                 'post_status' => 'publish',
                 'post_type'   => 'page',
             ));
-
-            if ($page_id && !is_wp_error($page_id) && !empty($page_data['template'])) {
-                update_post_meta($page_id, '_wp_page_template', $page_data['template']);
+            if ($id && !is_wp_error($id) && !empty($data['template'])) {
+                update_post_meta($id, '_wp_page_template', $data['template']);
             }
         }
     }
 
-    // Set default permalinks if not set
-    $current_structure = get_option('permalink_structure');
-    if (empty($current_structure)) {
+    // Set default permalinks if empty
+    if (empty(get_option('permalink_structure'))) {
         update_option('permalink_structure', '/%postname%/');
         flush_rewrite_rules();
     }
@@ -1226,18 +1035,15 @@ register_activation_hook(__FILE__, 'bdc_activate');
 // ============================================================
 function bdc_deactivate() {
     flush_rewrite_rules();
-
-    // Clear scheduled events
     wp_clear_scheduled_hook('bdc_daily_backup');
 }
 register_deactivation_hook(__FILE__, 'bdc_deactivate');
 
 // ============================================================
-// THEME UPDATE HOOK (re-flush rules on version change)
+// VERSION CHECK (auto-flush on update)
 // ============================================================
 function bdc_check_version() {
-    $saved_version = get_option('bdc_theme_version', '0.0.0');
-    if (version_compare($saved_version, BDC_VERSION, '<')) {
+    if (version_compare(get_option('bdc_theme_version', '0.0.0'), BDC_VERSION, '<')) {
         flush_rewrite_rules();
         update_option('bdc_theme_version', BDC_VERSION);
     }
@@ -1245,68 +1051,31 @@ function bdc_check_version() {
 add_action('after_setup_theme', 'bdc_check_version');
 
 // ============================================================
-// PREVENT DIRECT ACCESS TO TEMPLATE PARTS
+// BLOCK DIRECT TEMPLATE ACCESS
 // ============================================================
 function bdc_block_direct_template_access() {
-    $template_path = str_replace('\\', '/', $_SERVER['SCRIPT_FILENAME'] ?? '');
-    $theme_path   = str_replace('\\', '/', BDC_DIR);
-
-    if (strpos($template_path, $theme_path . '/template-parts/') !== false) {
+    if (!isset($_SERVER['SCRIPT_FILENAME'])) return;
+    $script = str_replace('\\', '/', $_SERVER['SCRIPT_FILENAME']);
+    $theme   = str_replace('\\', '/', BDC_DIR);
+    if (strpos($script, $theme . '/template-parts/') !== false) {
         wp_die(__('Direct access to template files is not allowed.', 'babarida-dive'), 403);
     }
 }
 add_action('init', 'bdc_block_direct_template_access');
 
 // ============================================================
-// ADD BDC_BOOKING CAPABILITY MAP
-// ============================================================
-function bdc_map_booking_meta_caps($caps, $cap, $user_id, $args) {
-    if (strpos($cap, 'bdc_booking') === false) {
-        return $caps;
-    }
-
-    // Admin can do everything
-    if (user_can($user_id, 'manage_options')) {
-        return array('manage_options');
-    }
-
-    // Users with bdc_manage_bookings can do most things
-    if (user_can($user_id, 'bdc_manage_bookings')) {
-        return array('bdc_manage_bookings');
-    }
-
-    // Users with bdc_view_bookings can only read
-    if ($cap === 'read_bdc_booking' || $cap === 'edit_bdc_booking') {
-        if (user_can($user_id, 'bdc_view_bookings')) {
-            return array('bdc_view_bookings');
-        }
-    }
-
-    return $caps;
-}
-add_filter('map_meta_cap', 'bdc_map_booking_meta_caps', 10, 4);
-
-// ============================================================
-// HELPER: Safely get theme mod with fallback
+// HELPER FUNCTIONS
 // ============================================================
 function bdc_get_mod($key, $fallback = '') {
-    $value = get_theme_mod($key, $fallback);
-    return $value ? $value : $fallback;
+    $val = get_theme_mod($key, $fallback);
+    return $val ? $val : $fallback;
 }
 
-// ============================================================
-// HELPER: Truncate text safely
-// ============================================================
 function bdc_truncate($text, $length = 100, $end = '...') {
-    if (mb_strlen($text) <= $length) {
-        return $text;
-    }
+    if (mb_strlen($text) <= $length) return $text;
     return mb_substr($text, 0, $length) . $end;
 }
 
-// ============================================================
-// HELPER: Format price with currency
-// ============================================================
 function bdc_price($amount_usd, $currency = '') {
     if (class_exists('BDC_Currency_Switcher')) {
         return BDC_Currency_Switcher::format_price((float) $amount_usd, $currency);
@@ -1314,26 +1083,18 @@ function bdc_price($amount_usd, $currency = '') {
     return '$' . number_format((float) $amount_usd, 2);
 }
 
-// ============================================================
-// HELPER: Get star rating HTML
-// ============================================================
 function bdc_stars($rating, $max = 5) {
     $html = '';
     for ($i = 1; $i <= $max; $i++) {
-        if ($i <= $rating) {
-            $html .= '<span style="color:var(--tropical-yellow);">★</span>';
-        } else {
-            $html .= '<span style="color:var(--light-gray);">★</span>';
-        }
+        $html .= ($i <= $rating)
+            ? '<span style="color:var(--tropical-yellow);">★</span>'
+            : '<span style="color:var(--light-gray);">★</span>';
     }
     return $html;
 }
 
-// ============================================================
-// HELPER: Get status badge HTML
-// ============================================================
 function bdc_status_badge($status) {
-    $badge_classes = array(
+    $map = array(
         'pending'    => 'bdc-badge-pending',
         'confirmed'  => 'bdc-badge-confirmed',
         'paid'       => 'bdc-badge-paid',
@@ -1341,28 +1102,19 @@ function bdc_status_badge($status) {
         'completed'  => 'bdc-badge-completed',
         'cancelled'  => 'bdc-badge-cancelled',
     );
-    $class = isset($badge_classes[$status]) ? $badge_classes[$status] : 'bdc-badge-pending';
+    $class = isset($map[$status]) ? $map[$status] : 'bdc-badge-pending';
     return '<span class="bdc-badge ' . esc_attr($class) . '">' . esc_html(ucfirst($status)) . '</span>';
 }
 
 // ============================================================
-// DEBUG: Log theme errors (only when WP_DEBUG_LOG is on)
+// ERROR HANDLER (theme-only errors to debug log)
 // ============================================================
 function bdc_error_handler($errno, $errstr, $errfile, $errline) {
-    // Only log errors from our theme
-    $theme_path = str_replace('\\', '/', BDC_DIR);
-    $err_file  = str_replace('\\', '/', $errfile);
-
-    if (strpos($err_file, $theme_path) !== false) {
-        error_log(sprintf(
-            '[BDC Theme] %s in %s on line %d',
-            $errstr,
-            $errfile,
-            $errline
-        ));
+    $theme = str_replace('\\', '/', BDC_DIR);
+    $file  = str_replace('\\', '/', $errfile);
+    if (strpos($file, $theme) !== false) {
+        error_log(sprintf('[BDC Theme] %s in %s:%d', $errstr, $errfile, $errline));
     }
-
-    // Don't prevent PHP's built-in error handler
     return false;
 }
 set_error_handler('bdc_error_handler');
