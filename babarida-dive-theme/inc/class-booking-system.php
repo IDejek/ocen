@@ -70,4 +70,10 @@ class BDC_Booking_System {
             'paid'     => get_post_meta($booking_id, 'paid_amount', true),
             'status'   => get_post_meta($booking_id, 'status', true),
             'company'  => get_bloginfo('name'),
-            'email'    => get_theme_mod('bdc_email', 'info
+            'email'    => get_theme_mod('bdc_email', 'info@babaridadive.com'),
+            'date_issued' => current_time('mysql'),
+        );
+        return $data;
+    }
+}
+BDC_Booking_System::init();
