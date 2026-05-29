@@ -174,67 +174,97 @@ function bdc_widgets_init() {
 add_action('widgets_init', 'bdc_widgets_init');
 
 // ============================================================
-// CUSTOM POST TYPES
+// CUSTOM POST TYPES (safe loading)
 // ============================================================
-require_once BDC_INC . 'cpt-destinations.php';
-require_once BDC_INC . 'cpt-trips.php';
-require_once BDC_INC . 'cpt-liveaboards.php';
-require_once BDC_INC . 'cpt-hotels.php';
-require_once BDC_INC . 'cpt-testimonials.php';
-require_once BDC_INC . 'cpt-partners.php';
-require_once BDC_INC . 'cpt-faq.php';
-require_once BDC_INC . 'cpt-bookings.php';
-require_once BDC_INC . 'cpt-courses.php';
-require_once BDC_INC . 'cpt-watersports.php';
+ $bdc_inc_files = array(
+    'cpt-destinations.php',
+    'cpt-trips.php',
+    'cpt-liveaboards.php',
+    'cpt-hotels.php',
+    'cpt-testimonials.php',
+    'cpt-partners.php',
+    'cpt-faq.php',
+    'cpt-bookings.php',
+    'cpt-courses.php',
+    'cpt-watersports.php',
+);
+
+foreach ($bdc_inc_files as $bdc_file) {
+    $bdc_path = BDC_INC . $bdc_file;
+    if (file_exists($bdc_path)) {
+        require_once $bdc_path;
+    }
+}
 
 // ============================================================
-// CORE SYSTEMS
+// CORE SYSTEMS (safe loading)
 // ============================================================
-require_once BDC_INC . 'class-mega-menu-walker.php';
-require_once BDC_INC . 'class-booking-system.php';
-require_once BDC_INC . 'class-pricing-engine.php';
-require_once BDC_INC . 'class-crm.php';
-require_once BDC_INC . 'class-payment-gateway.php';
-require_once BDC_INC . 'class-seo-manager.php';
-require_once BDC_INC . 'class-weather-api.php';
-require_once BDC_INC . 'class-loyalty-system.php';
-require_once BDC_INC . 'class-waiver-system.php';
-require_once BDC_INC . 'class-media-delivery.php';
-require_once BDC_INC . 'class-currency-switcher.php';
-require_once BDC_INC . 'class-ai-chat.php';
-require_once BDC_INC . 'class-notification-system.php';
-require_once BDC_INC . 'class-activity-logger.php';
-require_once BDC_INC . 'class-system-health.php';
-require_once BDC_INC . 'class-backup-system.php';
-require_once BDC_INC . 'class-role-manager.php';
-require_once BDC_INC . 'class-dashboard.php';
-require_once BDC_INC . 'class-admin-chat.php';
-require_once BDC_INC . 'class-newsletter.php';
-require_once BDC_INC . 'class-social-sync.php';
+ $bdc_class_files = array(
+    'class-mega-menu-walker.php',
+    'class-booking-system.php',
+    'class-pricing-engine.php',
+    'class-crm.php',
+    'class-payment-gateway.php',
+    'class-seo-manager.php',
+    'class-weather-api.php',
+    'class-loyalty-system.php',
+    'class-waiver-system.php',
+    'class-media-delivery.php',
+    'class-currency-switcher.php',
+    'class-ai-chat.php',
+    'class-notification-system.php',
+    'class-activity-logger.php',
+    'class-system-health.php',
+    'class-backup-system.php',
+    'class-role-manager.php',
+    'class-dashboard.php',
+    'class-admin-chat.php',
+    'class-newsletter.php',
+    'class-social-sync.php',
+);
+
+foreach ($bdc_class_files as $bdc_class_file) {
+    $bdc_path = BDC_INC . $bdc_class_file;
+    if (file_exists($bdc_path)) {
+        require_once $bdc_path;
+    }
+}
 
 // ============================================================
 // WORDPRESS CUSTOMIZER
 // ============================================================
-require_once BDC_DIR . '/customizer.php';
+ $bdc_customizer_path = BDC_DIR . '/customizer.php';
+if (file_exists($bdc_customizer_path)) {
+    require_once $bdc_customizer_path;
+}
 
 // ============================================================
-// ADMIN PAGES
+// ADMIN PAGES (safe loading, admin only)
 // ============================================================
-require_once BDC_ADMIN . 'dashboard.php';
-require_once BDC_ADMIN . 'bookings.php';
-require_once BDC_ADMIN . 'analytics.php';
-require_once BDC_ADMIN . 'pricing.php';
-require_once BDC_ADMIN . 'customers.php';
-require_once BDC_ADMIN . 'seo-panel.php';
-require_once BDC_ADMIN . 'weather-panel.php';
-require_once BDC_ADMIN . 'media-mgmt.php';
-require_once BDC_ADMIN . 'roles.php';
-require_once BDC_ADMIN . 'activity-log.php';
-require_once BDC_ADMIN . 'chat.php';
-require_once BDC_ADMIN . 'newsletter.php';
-require_once BDC_ADMIN . 'backup.php';
-require_once BDC_ADMIN . 'system-health.php';
+if (is_admin()) {
+    $bdc_admin_files = array(
+        'dashboard.php',
+        'bookings.php',
+        'analytics.php',
+        'pricing.php',
+        'customers.php',
+        'seo-panel.php',
+        'weather-panel.php',
+        'media-mgmt.php',
+        'roles.php',
+        'activity-log.php',
+        'chat.php',
+        'newsletter.php',
+        'backup.php',
+        'system-health.php',
+    );
 
+    foreach ($bdc_admin_files as $bdc_admin_file) {
+        $bdc_path = BDC_ADMIN . $bdc_admin_file;
+        if (file_exists($bdc_path)) {
+            require_once $bdc_path;
+}
+            
 // ============================================================
 // AJAX HANDLERS
 // ============================================================
