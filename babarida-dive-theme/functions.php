@@ -378,6 +378,18 @@ function bdc_filter_products() {
         'max_pages'  => $query->max_num_pages,
     ));
 }
+// CRM Customer Search (Admin)
+add_action('wp_ajax_bdc_get_customer', function() {
+    check_ajax_referer('bdc_admin_nonce', 'nonce');
+    $email = sanitize_email($_POST['email'] ?? '');
+    if (!$email) {
+        wp_send_json_error(array('message' => __('Invalid email.', 'babarida-dive')));
+    }
+    if (!class_exists('BDC_CRM')) {
+        require_once BDC_INC . 'class-crm.php';
+    }
+    wp_send_json_success(BDC_CRM::get_customer_profile($email));
+});
 
 // Weather Data
 add_action('wp_ajax_bdc_get_weather', 'bdc_get_weather');
