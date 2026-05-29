@@ -1,0 +1,28 @@
+{
+  "name": "Babarida Dive Center",
+  "short_name": "Babarida",
+  "description": "Premium Diving in Bunaken, Siladen, Bangka & Lembeh",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#001D3D",
+  "theme_color": "#003566",
+  "orientation": "portrait-primary",
+  "lang": "en",
+  "categories": ["travel", "sports"],
+  "icons": [
+    {
+      "src": "/wp-content/themes/babarida-dive-theme/assets/images/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/wp-content/themes/babarida-dive-theme/assets/images/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [],
+  "prefer_related_applications": false
+}
