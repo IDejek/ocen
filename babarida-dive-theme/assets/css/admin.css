@@ -1,0 +1,57 @@
+/* Admin Dashboard Styles */
+.bdc-admin-wrap { font-family: 'DM Sans', -apple-system, sans-serif; }
+.bdc-admin-wrap * { box-sizing: border-box; }
+
+.bdc-admin-sidebar { position: fixed; left: 0; top: 0; width: 260px; height: 100vh; background: linear-gradient(180deg, #001D3D, #003566); color: white; padding: 24px 0; overflow-y: auto; z-index: 100; }
+.bdc-admin-sidebar .admin-logo { padding: 0 24px 24px; border-bottom: 1px solid rgba(255,255,255,0.08); margin-bottom: 16px; }
+.bdc-admin-sidebar .admin-logo h3 { font-family: 'Playfair Display', serif; font-size: 18px; margin: 0; }
+.bdc-admin-sidebar .admin-logo small { font-size: 11px; color: #48CAE4; letter-spacing: 2px; text-transform: uppercase; }
+.bdc-admin-nav a { display: flex; align-items: center; gap: 12px; padding: 12px 24px; font-size: 14px; color: rgba(255,255,255,0.6); transition: all 0.3s; text-decoration: none; }
+.bdc-admin-nav a:hover, .bdc-admin-nav a.active { background: rgba(255,255,255,0.06); color: white; }
+.bdc-admin-nav a.active { border-left: 3px solid #FFB703; }
+.bdc-admin-nav .nav-section { padding: 16px 24px 8px; font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; color: rgba(255,255,255,0.3); }
+
+.bdc-admin-main { margin-left: 260px; padding: 32px; background: #F0F4F8; min-height: 100vh; }
+.bdc-admin-topbar { display: flex; align-items: center; justify-content: space-between; margin-bottom: 32px; }
+.bdc-admin-topbar h1 { font-family: 'Playfair Display', serif; font-size: 28px; color: #0B1D35; }
+
+.bdc-stat-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-bottom: 32px; }
+.bdc-stat-card { background: white; border-radius: 16px; padding: 24px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); border: 1px solid rgba(0,0,0,0.04); }
+.bdc-stat-card .stat-icon { width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 16px; color: white; font-size: 20px; }
+.bdc-stat-card .stat-value { font-size: 32px; font-weight: 700; color: #0B1D35; }
+.bdc-stat-card .stat-label { font-size: 13px; color: #94A3B8; margin-top: 4px; }
+.bdc-stat-card .stat-change { font-size: 12px; font-weight: 600; margin-top: 8px; }
+.bdc-stat-card .stat-change.up { color: #10B981; }
+.bdc-stat-card .stat-change.down { color: #EF4444; }
+
+.bdc-card { background: white; border-radius: 16px; padding: 24px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); margin-bottom: 24px; }
+.bdc-card h3 { font-size: 18px; font-weight: 700; color: #0B1D35; margin-bottom: 16px; }
+
+.bdc-table { width: 100%; border-collapse: collapse; }
+.bdc-table th { background: #F8FBFF; padding: 12px 16px; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: #334155; text-align: left; border-bottom: 2px solid #EEF2F6; }
+.bdc-table td { padding: 12px 16px; font-size: 14px; color: #334155; border-bottom: 1px solid #EEF2F6; }
+.bdc-table tbody tr:hover { background: #F8FBFF; }
+
+.bdc-badge { display: inline-block; padding: 3px 10px; border-radius: 9999px; font-size: 11px; font-weight: 600; }
+.bdc-badge-pending { background: #FEF3C7; color: #D97706; }
+.bdc-badge-confirmed { background: #DBEAFE; color: #2563EB; }
+.bdc-badge-paid { background: #D1FAE5; color: #059669; }
+.bdc-badge-completed { background: #E0E7FF; color: #4F46E5; }
+.bdc-badge-cancelled { background: #FEE2E2; color: #DC2626; }
+.bdc-badge-checked-in { background: #CCFBF1; color: #0D9488; }
+
+.chat-msg { padding: 12px 16px; margin-bottom: 8px; border-radius: 12px; max-width: 80%; }
+.chat-msg.me { background: #0077B6; color: white; margin-left: auto; }
+.chat-msg.them { background: #EEF2F6; color: #334155; }
+.chat-msg strong { font-size: 13px; }
+.chat-msg small { font-size: 11px; opacity: 0.7; margin-left: 8px; }
+.chat-msg p { margin: 4px 0 0; font-size: 14px; line-height: 1.5; }
+
+@media (max-width: 1024px) {
+    .bdc-stat-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 768px) {
+    .bdc-admin-sidebar { transform: translateX(-100%); }
+    .bdc-admin-main { margin-left: 0; }
+    .bdc-stat-grid { grid-template-columns: 1fr; }
+}
