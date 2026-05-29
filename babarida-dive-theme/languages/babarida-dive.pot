@@ -1,0 +1,1033 @@
+# Babarida Dive Center Theme Translation Template
+# Copyright (C) 2024 Iqbal Tombinawa
+# This file is distributed under the GPL v2.
+msgid ""
+msgstr ""
+"Project-Id-Version: Babarida Dive Center 1.0.0\n"
+"Report-Msgid-Bugs-To: tombinawaiqbal@gmail.com\n"
+"POT-Creation-Date: 2024-01-01 00:00+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Iqbal Tombinawa <tombinawaiqbal@gmail.com>\n"
+"Language-Team: Indonesian <id@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "Check-In"
+msgstr ""
+
+msgid "Dive Center"
+msgstr ""
+
+msgid "Welcome"
+msgstr ""
+
+msgid "Welcome to Babarida Dive Center"
+msgstr ""
+
+msgid "Unchain Your Adventure, Go Scuba Diving.!"
+msgstr ""
+
+msgid "Our team is intimately familiar with Bunaken, Siladen, Bangka, and Lembeh and has worked together for years, creating safe, smooth, and unforgettable experiences for divers of all levels."
+msgstr ""
+
+msgid "Liveaboard Cruises"
+msgstr ""
+
+msgid "Dive Safaris"
+msgstr ""
+
+msgid "Water Sports"
+msgstr ""
+
+msgid "Day Trips"
+msgstr ""
+
+msgid "SSI Courses"
+msgstr ""
+
+msgid "Snorkeling"
+msgstr ""
+
+msgid "We offer these services in two of the most biodiverse marine areas on the planet. Choose your destination and start planning your next trip."
+msgstr ""
+
+msgid "Explore Destinations"
+msgstr ""
+
+msgid "View Liveaboards"
+msgstr ""
+
+msgid "Destinations"
+msgstr ""
+
+msgid "Explore Our Dive Destinations"
+msgstr ""
+
+msgid "Four extraordinary locations, each offering a unique diving experience in the heart of the Coral Triangle."
+msgstr ""
+
+msgid "Liveaboards"
+msgstr ""
+
+msgid "Our Liveaboards"
+msgstr ""
+
+msgid "Embark on an unforgettable journey aboard our luxury liveaboard vessels, cruising through the world's most biodiverse waters."
+msgstr ""
+
+msgid "Ocean Conditions"
+msgstr ""
+
+msgid "Current Diving Conditions"
+msgstr ""
+
+msgid "Air Temp"
+msgstr ""
+
+msgid "Water Temp"
+msgstr ""
+
+msgid "Visibility"
+msgstr ""
+
+msgid "Wind Speed"
+msgstr ""
+
+msgid "Tide"
+msgstr ""
+
+msgid "Accommodation"
+msgstr ""
+
+msgid "Recommended Hotels in Manado"
+msgstr ""
+
+msgid "Hand-picked hotels and resorts for your stay before and after your diving adventure."
+msgstr ""
+
+msgid "Pricing"
+msgstr ""
+
+msgid "Monthly Price List"
+msgstr ""
+
+msgid "Transparent pricing with seasonal variations. All prices in USD per person."
+msgstr ""
+
+msgid "Month"
+msgstr ""
+
+msgid "Season"
+msgstr ""
+
+msgid "Day Trip"
+msgstr ""
+
+msgid "Dive & Stay"
+msgstr ""
+
+msgid "Dive Course"
+msgstr ""
+
+msgid "Book"
+msgstr ""
+
+msgid "Export PDF"
+msgstr ""
+
+msgid "Location"
+msgstr ""
+
+msgid "North Sulawesi Dive Map"
+msgstr ""
+
+msgid "Reviews"
+msgstr ""
+
+msgid "What Our Divers Say"
+msgstr ""
+
+msgid "Partners"
+msgstr ""
+
+msgid "Our Partners"
+msgstr ""
+
+msgid "Stay Updated"
+msgstr ""
+
+msgid "Subscribe to receive diving tips, special offers, and news from North Sulawesi."
+msgstr ""
+
+msgid "Subscribe"
+msgstr ""
+
+msgid "Enter your email address"
+msgstr ""
+
+msgid "No spam. Unsubscribe anytime."
+msgstr ""
+
+msgid "Book Your Adventure"
+msgstr ""
+
+msgid "Fill in the details below and we'll get back to you within 24 hours."
+msgstr ""
+
+msgid "Full Name *"
+msgstr ""
+
+msgid "Email *"
+msgstr ""
+
+msgid "Phone / WhatsApp"
+msgstr ""
+
+msgid "Nationality"
+msgstr ""
+
+msgid "Trip Type"
+msgstr ""
+
+msgid "Select..."
+msgstr ""
+
+msgid "Preferred Date"
+msgstr ""
+
+msgid "Number of Guests"
+msgstr ""
+
+msgid "Destination"
+msgstr ""
+
+msgid "Special Requests"
+msgstr ""
+
+msgid "Submit Booking Request"
+msgstr ""
+
+msgid "No payment required now. We'll confirm availability and send you a quote."
+msgstr ""
+
+msgid "Back to Top"
+msgstr ""
+
+msgid "Email Us"
+msgstr ""
+
+msgid "WhatsApp"
+msgstr ""
+
+msgid "Book Now"
+msgstr ""
+
+msgid "Back to Home"
+msgstr ""
+
+msgid "Loading..."
+msgstr ""
+
+msgid "Message sent!"
+msgstr ""
+
+msgid "Something went wrong. Please try again."
+msgstr ""
+
+msgid "This field is required."
+msgstr ""
+
+msgid "All rights reserved."
+msgstr ""
+
+msgid "Developed by"
+msgstr ""
+
+msgid "Contact Information"
+msgstr ""
+
+msgid "WhatsApp Number"
+msgstr ""
+
+msgid "Email Address"
+msgstr ""
+
+msgid "Phone Number"
+msgstr ""
+
+msgid "Address"
+msgstr ""
+
+msgid "Social Media"
+msgstr ""
+
+msgid "SEO Settings"
+msgstr ""
+
+msgid "Google Search Console Verification Code"
+msgstr ""
+
+msgid "Bing Webmaster Verification"
+msgstr ""
+
+msgid "Google Analytics 4 ID"
+msgstr ""
+
+msgid "Google Tag Manager ID"
+msgstr ""
+
+msgid "Default OG Image"
+msgstr ""
+
+msgid "Payment Settings"
+msgstr ""
+
+msgid "Weather API"
+msgstr ""
+
+msgid "OpenWeatherMap API Key"
+msgstr ""
+
+msgid "Latitude"
+msgstr ""
+
+msgid "Longitude"
+msgstr ""
+
+msgid "Hero Section"
+msgstr ""
+
+msgid "Hero Video URL (MP4)"
+msgstr ""
+
+msgid "Hero Fallback Image"
+msgstr ""
+
+msgid "Hero Title"
+msgstr ""
+
+msgid "Hero Slogan"
+msgstr ""
+
+msgid "Wall Diving Paradise"
+msgstr ""
+
+msgid "Pristine Reef Gardens"
+msgstr ""
+
+msgid "Dramatic Underwater Landscapes"
+msgstr ""
+
+msgid "World's Best Muck Diving"
+msgstr ""
+
+msgid "Dive Sites"
+msgstr ""
+
+msgid "Depth Range"
+msgstr ""
+
+msgid "Average Visibility"
+msgstr ""
+
+msgid "Water Temperature Range"
+msgstr ""
+
+msgid "Best Season"
+msgstr ""
+
+msgid "Travel Time from Manado"
+msgstr ""
+
+msgid "From Manado:"
+msgstr ""
+
+msgid "No results found."
+msgstr ""
+
+msgid "Read More"
+msgstr ""
+
+msgid "View"
+msgstr ""
+
+msgid "Learn More"
+msgstr ""
+
+msgid "Details"
+msgstr ""
+
+msgid "View All Liveaboards"
+msgstr ""
+
+msgid "Inquire"
+msgstr ""
+
+msgid "per person"
+msgstr ""
+
+msgid "per night"
+msgstr ""
+
+msgid "Starting from"
+msgstr ""
+
+msgid "Ask on WhatsApp"
+msgstr ""
+
+msgid "Cabins"
+msgstr ""
+
+msgid "Length"
+msgstr ""
+
+msgid "Guests"
+msgstr ""
+
+msgid "No posts found."
+msgstr ""
+
+msgid "Page Not Found"
+msgstr ""
+
+msgid "The page you're looking for doesn't exist or has been moved. Let's get you back on track."
+msgstr ""
+
+msgid "Go Home"
+msgstr ""
+
+msgid "Search Results for: %s"
+msgstr ""
+
+msgid "%d result found."
+msgid_plural "%d results found."
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "Search destinations, trips, courses..."
+msgstr ""
+
+msgid "All"
+msgstr ""
+
+msgid "Trips"
+msgstr ""
+
+msgid "Courses"
+msgstr ""
+
+msgid "Hotels"
+msgstr ""
+
+msgid "Blog"
+msgstr ""
+
+msgid "Search"
+msgstr ""
+
+msgid "Type"
+msgstr ""
+
+msgid "Home"
+msgstr ""
+
+msgid "Blog"
+msgstr ""
+
+msgid "FAQ"
+msgstr ""
+
+msgid "Latest News & Updates"
+msgstr ""
+
+msgid "Need Help?"
+msgstr ""
+
+msgid "Our team is ready to help you plan the perfect diving trip."
+msgstr ""
+
+msgid "Chat on WhatsApp"
+msgstr ""
+
+msgid "Filter by Price"
+msgstr ""
+
+msgid "Min Price (USD)"
+msgstr ""
+
+msgid "Max Price (USD)"
+msgstr ""
+
+msgid "You May Also Like"
+msgstr ""
+
+msgid "Leave a Review"
+msgstr ""
+
+msgid "Your Review"
+msgstr ""
+
+msgid "Name"
+msgstr ""
+
+msgid "Your review is awaiting moderation."
+msgstr ""
+
+msgid "Online Check-In"
+msgstr ""
+
+msgid "Complete your check-in before arriving at the dive center."
+msgstr ""
+
+msgid "Find Booking"
+msgstr ""
+
+msgid "Details"
+msgstr ""
+
+msgid "Confirm"
+msgstr ""
+
+msgid "Booking Reference or Email"
+msgstr ""
+
+msgid "e.g. BDC-123 or your@email.com"
+msgstr ""
+
+msgid "Find My Booking"
+msgstr ""
+
+msgid "Passport Number"
+msgstr ""
+
+msgid "Passport Expiry"
+msgstr ""
+
+msgid "Hotel Pickup Location"
+msgstr ""
+
+msgid "Hotel name or address in Manado"
+msgstr ""
+
+msgid "Certification Level"
+msgstr ""
+
+msgid "Non-Diver / Snorkeler"
+msgstr ""
+
+msgid "Open Water"
+msgstr ""
+
+msgid "Advanced Open Water"
+msgstr ""
+
+msgid "Rescue Diver"
+msgstr ""
+
+msgid "Divemaster"
+msgstr ""
+
+msgid "Instructor"
+msgstr ""
+
+msgid "Total Logged Dives"
+msgstr ""
+
+msgid "Medical Conditions"
+msgstr ""
+
+msgid "List any medical conditions or medications"
+msgstr ""
+
+msgid "Back"
+msgstr ""
+
+msgid "Complete Check-In"
+msgstr ""
+
+msgid "Check-In Complete!"
+msgstr ""
+
+msgid "Your check-in has been submitted. See you at the dive center!"
+msgstr ""
+
+msgid "Booking submitted successfully!"
+msgstr ""
+
+msgid "Name and email are required."
+msgstr ""
+
+msgid "Booking failed. Please try again."
+msgstr ""
+
+msgid "Invalid email address."
+msgstr ""
+
+msgid "You are already subscribed."
+msgstr ""
+
+msgid "Successfully subscribed!"
+msgstr ""
+
+msgid "Hello! I'm your diving assistant. How can I help you today? You can ask about destinations, courses, pricing, or anything else!"
+msgstr ""
+
+msgid "Type your question..."
+msgstr ""
+
+msgid "Send message"
+msgstr ""
+
+msgid "Close chat"
+msgstr ""
+
+msgid "Open AI Assistant"
+msgstr ""
+
+msgid "World clocks"
+msgstr ""
+
+msgid "Contact via WhatsApp"
+msgstr ""
+
+msgid "Send email"
+msgstr ""
+
+msgid "Language switcher"
+msgstr ""
+
+msgid "Toggle menu"
+msgstr ""
+
+msgid "Previous testimonial"
+msgstr ""
+
+msgid "Next testimonial"
+msgstr ""
+
+msgid "Quick actions"
+msgstr ""
+
+msgid "Hero"
+msgstr ""
+
+msgid "Coral reef diving"
+msgstr ""
+
+msgid "No image"
+msgstr ""
+
+msgid "Years Experience"
+msgstr ""
+
+msgid "Famous wall diving with spectacular coral reefs and abundant marine life."
+msgstr ""
+
+msgid "Pristine reef gardens with excellent visibility and calm waters."
+msgstr ""
+
+msgid "Dramatic pinnacles, soft corals, and rare critter encounters."
+msgstr ""
+
+msgid "World-class muck diving with the rarest underwater creatures."
+msgstr ""
+
+msgid "Our flagship liveaboard offering luxury accommodations and premium diving across Bunaken, Bangka, and Lembeh straits. Featuring spacious cabins, sun deck, dive platform, and professional crew."
+msgstr ""
+
+msgid "Comfortable accommodation near Manado city center with easy access to the dive center."
+msgstr ""
+
+msgid "Admin Portal"
+msgstr ""
+
+msgid "Username or Email"
+msgstr ""
+
+msgid "Password"
+msgstr ""
+
+msgid "Remember me"
+msgstr ""
+
+msgid "Sign In"
+msgstr ""
+
+msgid "Lost your password?"
+msgstr ""
+
+msgid "Sending..."
+msgstr ""
+
+msgid "Booking Submitted!"
+msgstr ""
+
+msgid "We'll contact you within 24 hours."
+msgstr ""
+
+msgid "Error. Please try again."
+msgstr ""
+
+msgid "Dashboard"
+msgstr ""
+
+msgid "Bookings"
+msgstr ""
+
+msgid "Analytics"
+msgstr ""
+
+msgid "Customers"
+msgstr ""
+
+msgid "System Health"
+msgstr ""
+
+msgid "Roles"
+msgstr ""
+
+msgid "Staff Chat"
+msgstr ""
+
+msgid "Newsletter"
+msgstr ""
+
+msgid "Backup"
+msgstr ""
+
+msgid "All Statuses"
+msgstr ""
+
+msgid "Pending"
+msgstr ""
+
+msgid "Confirmed"
+msgstr ""
+
+msgid "Paid"
+msgstr ""
+
+msgid "Checked-In"
+msgstr ""
+
+msgid "Completed"
+msgstr ""
+
+msgid "Cancelled"
+msgstr ""
+
+msgid "Search by name, email, or ID..."
+msgstr ""
+
+msgid "Export Excel"
+msgstr ""
+
+msgid "Export PDF"
+msgstr ""
+
+msgid "Edit"
+msgstr ""
+
+msgid "Daily"
+msgstr ""
+
+msgid "Weekly"
+msgstr ""
+
+msgid "Monthly"
+msgstr ""
+
+msgid "Annual"
+msgstr ""
+
+msgid "bookings"
+msgstr ""
+
+msgid "revenue"
+msgstr ""
+
+msgid "Booking Status Breakdown (This Month)"
+msgstr ""
+
+msgid "Dynamic Pricing"
+msgstr ""
+
+msgid "Set base prices per trip type. Seasonal multipliers are applied automatically: Peak (Jun-Sep) x1.35, High (Apr-May, Oct-Dec) x1.15, Low (Jan-Mar) x1.0"
+msgstr ""
+
+msgid "Base Price (USD)"
+msgstr ""
+
+msgid "Low Season"
+msgstr ""
+
+msgid "High Season"
+msgstr ""
+
+msgid "Peak Season"
+msgstr ""
+
+msgid "Save Prices"
+msgstr ""
+
+msgid "Prices saved."
+msgstr ""
+
+msgid "Customer Management (CRM)"
+msgstr ""
+
+msgid "Search by email to view customer profile..."
+msgstr ""
+
+msgid "Search"
+msgstr ""
+
+msgid "Customer not found."
+msgstr ""
+
+msgid "Verification Codes"
+msgstr ""
+
+msgid "Also configurable in Appearance > Customize > SEO Settings"
+msgstr ""
+
+msgid "Google Search Console"
+msgstr ""
+
+msgid "Bing Webmaster"
+msgstr ""
+
+msgid "Google Analytics 4"
+msgstr ""
+
+msgid "Sitemap & Indexing"
+msgstr ""
+
+msgid "View Sitemap"
+msgstr ""
+
+msgid "View robots.txt"
+msgstr ""
+
+msgid "Open Google Search Console"
+msgstr ""
+
+msgid "Open Bing Webmaster"
+msgstr ""
+
+msgid "Weather & Ocean Conditions"
+msgstr ""
+
+msgid "Condition:"
+msgstr ""
+
+msgid "Cached for 30 minutes. Configure API key in Customize > Weather API."
+msgstr ""
+
+msgid "Activity Log"
+msgstr ""
+
+msgid "Action"
+msgstr ""
+
+msgid "User"
+msgstr ""
+
+msgid "IP"
+msgstr ""
+
+msgid "Type a message..."
+msgstr ""
+
+msgid "Send"
+msgstr ""
+
+msgid "Total Subscribers"
+msgstr ""
+
+msgid "Send Campaign"
+msgstr ""
+
+msgid "Subject"
+msgstr ""
+
+msgid "Content (HTML)"
+msgstr ""
+
+msgid "Send Test"
+msgstr ""
+
+msgid "Send to All"
+msgstr ""
+
+msgid "Create Backup"
+msgstr ""
+
+msgid "Backs up all Babarida Dive Center custom tables (bookings, CRM, settings, etc.) to a SQL file."
+msgstr ""
+
+msgid "Create Backup Now"
+msgstr ""
+
+msgid "Automated daily backups are also scheduled."
+msgstr ""
+
+msgid "Backup & Restore"
+msgstr ""
+
+msgid "Role Management"
+msgstr ""
+
+msgid "Custom roles for Babarida Dive Center. Roles are registered on theme activation."
+msgstr ""
+
+msgid "Display Name"
+msgstr ""
+
+msgid "Users Count"
+msgstr ""
+
+msgid "Capabilities"
+msgstr ""
+
+msgid "Re-register Roles"
+msgstr ""
+
+msgid "Use this if roles are missing after an update."
+msgstr ""
+
+msgid "Re-register All Roles"
+msgstr ""
+
+msgid "Roles re-registered successfully."
+msgstr ""
+
+msgid "Media Management"
+msgstr ""
+
+msgid "Hero Media"
+msgstr ""
+
+msgid "Manage hero section video and image from Customize > Hero Section."
+msgstr ""
+
+msgid "Edit Hero"
+msgstr ""
+
+msgid "Media Library"
+msgstr ""
+
+msgid "Access all uploaded images, videos, and documents."
+msgstr ""
+
+msgid "Open Library"
+msgstr ""
+
+msgid "Image Optimization"
+msgstr ""
+
+msgid "The theme applies lazy loading, WebP-ready attributes, and responsive srcset automatically."
+msgstr ""
+
+msgid "Auto-Optimized"
+msgstr ""
+
+msgid "Today's Bookings"
+msgstr ""
+
+msgid "Monthly Revenue"
+msgstr ""
+
+msgid "Active Bookings"
+msgstr ""
+
+msgid "Completion Rate"
+msgstr ""
+
+msgid "Recent Bookings"
+msgstr ""
+
+msgid "Popular Destinations"
+msgstr ""
+
+msgid "Quick Actions"
+msgstr ""
+
+msgid "Add New Trip"
+msgstr ""
+
+msgid "Add Liveaboard"
+msgstr ""
+
+msgid "View All Bookings"
+msgstr ""
+
+msgid "Status updated to:"
+msgstr ""
+
+msgid "Email sent to guest."
+msgstr ""
+
+msgid "15+"
+msgstr ""
+
+msgid "45 min"
+msgstr ""
+
+msgid "35 min"
+msgstr ""
+
+msgid "90 min"
+msgstr ""
+
+msgid "60 min"
+msgstr ""
+
+msgid "5-40m"
+msgstr ""
+
+msgid "3-30m"
+msgstr ""
+
+msgid "5-35m"
+msgstr ""
+
+msgid "3-25m"
+msgstr ""
+
+msgid "15-30m"
+msgstr ""
+
+msgid "20-35m"
+msgstr ""
+
+msgid "15-25m"
+msgstr ""
+
+msgid "10-20m"
+msgstr ""
+
+msgid "25+"
+msgstr ""
+
+msgid "12+"
+msgstr ""
+
+msgid "18+"
+msgstr ""
+
+msgid "30+"
+msgstr ""
+
+msgid "Peak Season"
+msgstr ""
+
+msgid "High Season"
+msgstr ""
+
+msgid "Low Season"
+msgstr ""
+
+msgid "Too many login attempts. Please try again in 15 minutes."
+msgstr ""
