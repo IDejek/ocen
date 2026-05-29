@@ -90,5 +90,11 @@ class BDC_Notification_System {
             . '</div>'
             . '<p style="text-align:center;font-size:12px;color:#94A3B8;margin-top:16px;">&copy; ' . $year . ' ' . $site_name . '</p>'
             . '</div>';
+            /**
+     * Public wrapper for build_email_template (used by newsletter)
+     */
+    public static function build_email_template_protected($title, $content) {
+        return self::build_email_template($title, $content);
+    
     }
 }
